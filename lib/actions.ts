@@ -43,7 +43,7 @@ export async function deleteProduct(formData: FormData) {
         name: z.string().min(1),
     })
     const data = schema.parse({
-        _id: formData.get("id"),
+        _id: formData.get("_id"),
         name: formData.get("name"),
     })
     try{

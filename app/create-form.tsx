@@ -66,8 +66,9 @@ export default function CreateForm() {
                                 defaultValue="1"
                             />
                         </div>
-                        {/* BUTTON */}
-                        
+                        {/* BUTTON create and back */}
+                        <button className='btn btn-primary mr-3' type='submit' disabled={pending}>Create</button>
+                        <button className='btn btn-ghost' type='button' onClick={()=> document.getElementById('my_modal_3')?.close()}>Back</button>
                     </form>
                 </div>
             </dialog>
