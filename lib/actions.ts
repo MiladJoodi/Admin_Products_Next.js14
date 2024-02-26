@@ -5,6 +5,7 @@ import dbConnect from './db-connect'
 import { z } from 'zod'
 import { parse } from 'path'
 
+// CREATE_ACTION
 export async function createProduct(prevState: any, formData: FormData) {
     const schema = z.object({
         name: z.string().min(3),
@@ -30,7 +31,29 @@ export async function createProduct(prevState: any, formData: FormData) {
         revalidatePath('/')
         return {message: `Created product ${data.name}`}
     }catch(e){
-        return {message: 'Faild to create product'}
+        return {message: 'Failed to create product'}
+    }
+
+}
+
+// DELETE_ACTION
+export async function deleteProduct(formData: FormData) {
+    const schema = z.object({
+        _id: z.string().min(1),
+        name: z.string().min(1),
+    })
+    const data = schema.parse({
+        _id: formData.get("id"),
+        name: formData.get("name"),
+    })
+    try{
+        await dbConnect()
+        await ProductModel.findByIdAndDelete({_id: data._id})
+        revalidatePath('/')
+        console.log({message: `Deleted product ${data.name}`})
+        return {message: `Deleted product ${data.name}`}
+    }catch(e){
+        return {message: 'Failed to delete product'}
     }
 
 }
