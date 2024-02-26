@@ -1,10 +1,10 @@
-import Image from "next/image";
-import CreateForm from "./create-form";
-import { Toaster } from "react-hot-toast";
-import Rating from "./rating";
-import DeleteForm from "./delete-form";
-import dbConnect from "@/lib/db-connect";
-import ProductModel, { Product } from "@/lib/product-model";
+import Image from 'next/image'
+import { Toaster } from 'react-hot-toast'
+import CreateForm from './create-form'
+import dbConnect from '@/lib/db-connect'
+import ProductModel, { Product } from '@/lib/product-model'
+import Rating from './rating'
+import DeleteForm from './delete-form'
 
 export default async function Home() {
 
